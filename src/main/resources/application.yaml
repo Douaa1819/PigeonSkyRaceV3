@@ -1,0 +1,64 @@
+server:
+  port: 8081
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: douaa
+    key-store-type: PKCS12
+
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/pigeonSkyV3
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: springboot-app
+            client-secret: douaa-client-secret124
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: https://localhost:8082/auth/realms/pigeonSkyV3
+    basic:
+      enabled: false
+
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: health, info, metrics, env, uptime
+    endpoint:
+      health:
+        show-details: always
+        group:
+          live:
+            include: uptime, db, diskspace, heap
+    security:
+      enabled: false
+
+keycloak:
+  auth-server-url: https://localhost:8082/auth
+  realm: pigeonSkyV3
+  resource: springboot-app
+  credentials:
+    secret: douaa-client-secret124
+  use-resource-role-mappings: true
+  public-client: false
+  bearer-only: true
