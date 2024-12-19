@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v3/competitions")
+//@RequestMapping("/api/v3/competitions")
 @RequiredArgsConstructor
 public class CompetitionController {
 
@@ -19,5 +19,10 @@ public class CompetitionController {
     @ResponseStatus(HttpStatus.CREATED)
     public CompetitionResponseDTO createCompetition(@Valid @RequestBody CompetitionRequestDTO competitionRequestDTO) {
         return competitionService.createCompetition(competitionRequestDTO);
+    }
+
+    @GetMapping("/hi")
+    public String hello(){
+        return "Hello World";
     }
 }

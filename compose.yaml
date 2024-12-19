@@ -9,7 +9,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/pigeonSkyV3
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/pigeonskyv3
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=password
     networks:
@@ -25,7 +25,7 @@ services:
     container_name: postgres
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - spring-postgres-network
     volumes:
@@ -33,7 +33,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: pigeonSkyV3
+      POSTGRES_DB: pigeonskyv3
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
