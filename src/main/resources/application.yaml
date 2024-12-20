@@ -28,16 +28,15 @@ spring:
       client:
         registration:
           keycloak:
-            client-id: springboot-app
-            client-secret: douaa-client-secret124
+            client-id: pigeonSkyClientId
+            client-secret: DFJVAIO6XFJz6C0oV225cY3KkH8VEdrI
+            scope: openid
             authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope: openid, profile, email
+            redirect-uri: https://localhost:8443/login/oauth2/code/keycloak
         provider:
           keycloak:
-            issuer-uri: https://localhost:8443/auth/realms/pigeonskyv3
-    basic:
-      enabled: false
+            issuer-uri: http://localhost:8082/realms/pigeonSkyV3
+
 
   management:
     endpoints:
@@ -58,10 +57,12 @@ keycloak:
   realm: pigeonSkyV3
   resource: springboot-app
   credentials:
-    secret: douaa1234
+    secret: pigeonSkyClientId
   use-resource-role-mappings: true
   public-client: false
   bearer-only: true
+
+
 
 logging:
   level:
