@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: pigeonSky CI/CD
 
 on:
   push:

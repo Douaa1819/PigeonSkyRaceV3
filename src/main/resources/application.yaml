@@ -1,5 +1,5 @@
 server:
-  port: 8443
+  port: 8444
   ssl:
     enabled: true
     key-store: classpath:keystore.p12
@@ -25,19 +25,17 @@ spring:
 
   security:
     oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: pigeonSkyClientId
-            client-secret: DFJVAIO6XFJz6C0oV225cY3KkH8VEdrI
-            scope: openid
-            authorization-grant-type: authorization_code
-            redirect-uri: https://localhost:8443/login/oauth2/code/keycloak
+      registration:
+        keycloak:
+          # Le reste de la configuration de Keycloak
+          client-id: pigeonSkyClientId
+          client-secret: DFJVAIO6XFJz6C0oV225cY3KkH8VEdrI
+          scope: openid
+          authorization-grant-type: authorization_code
+          redirect-uri: https://localhost:8443/login/oauth2/code/keycloak
         provider:
           keycloak:
-            issuer-uri: http://localhost:8082/realms/pigeonSkyV3
-
-
+            issuer-uri: https://localhost:8443/realms/pigeonSkyV3
   management:
     endpoints:
       web:
@@ -53,7 +51,7 @@ spring:
       enabled: false
 
 keycloak:
-  auth-server-url: "https://localhost:8443/auth"
+  auth-server-url: "https://localhost:8444/auth"
   realm: pigeonSkyV3
   resource: springboot-app
   credentials:
@@ -64,9 +62,9 @@ keycloak:
 
 
 
-logging:
-  level:
-    root: INFO
-    keycloak: DEBUG
-    org.springframework.security: INFO
-    org.keycloak: WARN
+  logging:
+    level:
+      root: INFO
+      keycloak: DEBUG
+      org.springframework.security: INFO
+      org.keycloak: WARN
