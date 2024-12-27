@@ -12,6 +12,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/pigeonskyv3
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=password
+      - SERVER_PORT=8443
     networks:
       - spring-postgres-network
     depends_on:
@@ -67,7 +68,6 @@ services:
       - KC_DB_PASSWORD=password
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
-      - KC_HTTPS_ENABLED=false
       - KC_HTTPS_KEY_STORE_FILE=/opt/keycloak/conf/keycloak.p12
       - KC_HTTPS_KEY_STORE_PASSWORD=codedouaa
       - KC_HTTPS_KEY_STORE_TYPE=PKCS12

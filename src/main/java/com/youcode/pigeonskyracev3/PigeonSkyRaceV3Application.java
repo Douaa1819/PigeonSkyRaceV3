@@ -9,6 +9,10 @@ public class PigeonSkyRaceV3Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PigeonSkyRaceV3Application.class, args);
+		String x = "true";
+		if(x.equals("true")){
+			System.out.println("hhhhh");
+		}
 	}
 
 }
